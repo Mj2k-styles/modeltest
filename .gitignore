@@ -1,0 +1,15 @@
+# fichiers personnels et temporaires
+*.ogg
+*.jpeg
+*.jpg
+.gradio/
+__pycache__/
+.ipynb_checkpoints/
+predictions*.csv
+
+# notebooks modèles vides (les versions remplies sont dans le dépôt)
+Clas_Log_Reg_Dec_Tree_Random_Forest.ipynb
+Reg_Mul_Reg_Ridge_Dec_Tree_Random_Forest.ipynb
+
+# anciens fichiers du taxi (remplacés par models/taxi/)
+/*.joblib
