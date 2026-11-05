@@ -20,7 +20,7 @@ MODELS = {
     'icon': '🚙', 'name': 'Voitures : venant ou occasion', 'type': 'Classification', 'color': '#0EA5E9',
     'question': "Cette voiture est-elle venant ou d'occasion ?",
     'description': "À partir de la marque, de l'année, de la boîte de vitesse, de l'adresse et du prix, le modèle prédit si la voiture vient de l'étranger (venant) ou est d'occasion locale.",
-    'score': 'Accuracy 0.75', 'unit': 'FCFA',
+    'score': 'Accuracy 0.82', 'unit': 'FCFA',
   },
   'car_dataset': {
     'icon': '🚗', 'name': 'Voitures : prix de revente', 'type': 'Régression', 'color': '#10B981',
@@ -138,10 +138,15 @@ html, body, [class*="css"], .stMarkdown, .stButton button, input, select, textar
 @st.cache_resource
 def load_objects(name):
   path = os.path.join(BASE_DIR, 'models', name)
-  model = jb.load(os.path.join(path, 'model.joblib'))
+  # modèle : model.joblib ou rf_model.joblib (nom utilisé dans les notebooks du cours)
+  model_file = 'model.joblib' if os.path.exists(os.path.join(path, 'model.joblib')) else 'rf_model.joblib'
+  model = jb.load(os.path.join(path, model_file))
   scaler = jb.load(os.path.join(path, 'scaler.joblib'))
   encoders = jb.load(os.path.join(path, 'encoders.joblib'))
   infos = jb.load(os.path.join(path, 'infos.joblib'))
+  # encodeurs sauvegardés en liste (comme dans le cours) : les associer à leurs colonnes
+  if isinstance(encoders, list):
+    encoders = dict(zip(infos['encoder_columns'], encoders))
   return model, scaler, encoders, infos
 
 

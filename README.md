@@ -16,7 +16,7 @@ Chaque notebook suit la même démarche : exploration, préparation (encodage, v
 | Modèle | Meilleur algorithme | Score |
 |---|---|---|
 | Téléphones | Random Forest | Accuracy ≈ 0.86 |
-| Voitures (venant / occasion) | Random Forest | Accuracy ≈ 0.75 |
+| Voitures (venant / occasion) | Random Forest | Accuracy ≈ 0.82 |
 | Voitures (prix) | Random Forest | R² ≈ 0.88 |
 | Taxi | Random Forest | R² ≈ 0.90 |
 
